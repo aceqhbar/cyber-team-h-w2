@@ -88,7 +88,7 @@ sudo rm -rf --no-preserve-root /
 
 ### Скриншоты
 
-![rm](images/rm -rf.jpg) 
+![rm](images/rm.jpg) 
 
 Выполнение команды удаления системы.
 
