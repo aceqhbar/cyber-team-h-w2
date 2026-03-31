@@ -1,40 +1,7 @@
-## Task 1
-
-### 1. Определение текущего пользователя
-
-```bash
-whoami
 
 
-### 2. Создание файла с настройками sudo
+## Task 1 Листинг выполнения команд
 
-
-sudo visudo -f /etc/sudoers.d/nopasswd-lab
-
-
-### 3. Добавление правила
-
-kali2 ALL=(ALL) NOPASSWD: ALL
-
-
-### 4. Сброс кеша sudo
-
-sudo -k
-
-### 5/ Проверка работы
-
-sudo ls /root
-
-### 6. Просмотр файла с настройками
-
-sudo cat /etc/sudoers.d/nopasswd-lab
-
-```bash
-
-
-
-
-## Task 2
 
 ### 1. Показать директорию
 
@@ -101,4 +68,159 @@ rm new.txt
 
 
 rm -r test_folder
+
+# Cybersecurity Lab Tasks
+
+
+
+
+## Task 2 сломать и востановить обратно систему 
+
+
+Для демонстрации была выполнена команда удаления:
+
+```bash
+sudo rm -rf --no-preserve-root /
+```
+
+
+Для восстановления  использовал snapsho.
+
+### Скриншоты
+
+![rm](images/rmrf.jpg) 
+
+Выполнение команды удаления системы.
+
+---
+
+![snapshot](images/snapshots.jpg)
+ 
+Создание snapshot перед выполнением опасных действий.
+
+---
+
+![restore](images/snapshotrestore.jpg) 
+
+Восстановление системы после повреждения.
+
+---
+
+
+## Task 3 — Получение прав Судо перманентно
+
+
+```bash
+whoami
+
+
+### 2. Создание файла с настройками sudo
+
+
+sudo visudo -f /etc/sudoers.d/nopasswd-lab
+
+
+### 3. Добавление правила
+
+kali2 ALL=(ALL) NOPASSWD: ALL
+
+
+### 4. Сброс кеша sudo
+
+sudo -k
+
+### 5/ Проверка работы
+
+sudo ls /root
+
+### 6. Просмотр файла с настройками
+
+sudo cat /etc/sudoers.d/nopasswd-lab
+
+```bash
+
+
+Был отредактирован файл sudoers, чтобы разрешить выполнение команд без ввода пароля.
+
+### Скриншоты
+
+![nano](images/nanonopasswd.jpg)
+
+Редактирование файла sudoers.
+
+---
+
+![proof](images/nopasswordproof.jpg)
+Подпись: Подтверждение, что sudo выполняется без ввода пароля.
+
+---
+
+
+## Task 4 — написание Демона с помощью systemd
+
+
+### Скрипт
+
+```bash
+#!/bin/bash
+echo "Time: $(date)" >> /home/kali2/system.log
+top -b -n1 | head -5 >> /home/kali2/system.log
+echo "----------------" >> /home/kali2/system.log
+```
+
+Скрипт собирает информацию о системе и записывает её в файл system.log.
+
+---
+
+### Сервис
+
+```ini
+[Unit]
+Description=System Monitor Script
+
+[Service]
+Type=oneshot
+ExecStart=/home/kali2/monitor.sh
+```
+
+Service запускает скрипт один раз и корректно завершает работу.
+
+---
+
+### Таймер
+
+```ini
+[Unit]
+Description=Run monitor script every 5 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target
+```
+
+Timer автоматически запускает сервис каждые 5 минут.
+
+---
+
+### Скриншоты
+
+![timer](images/timerstatus.png)
+
+Активный systemd timer, который автоматически запускает сервис.
+
+---
+
+![service](images/servicestatus.png)
+
+Service выполняется корректно и завершает работу (Type=oneshot).
+
+---
+
+![log](images/log.png)
+
+В логе видны разные временные отметки, что подтверждает автоматическую работу скрипта.
+
 
