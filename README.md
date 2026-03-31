@@ -88,7 +88,7 @@ sudo rm -rf --no-preserve-root /
 
 ### Скриншоты
 
-![rm](images/rmrf.jpg) 
+![rm](images/rm -rf.jpg) 
 
 Выполнение команды удаления системы.
 
@@ -151,13 +151,13 @@ sudo cat /etc/sudoers.d/nopasswd-lab
 
 ### Скриншоты
 
-![nano](images/nanonopasswd.jpg)
+![nano](images/nanonopwsd.jpg)
 
 Редактирование файла sudoers.
 
 ---
 
-![proof](images/nopasswordproof.jpg)
+![proof](images/nopswdproof.jpg)
 
 Подтверждение, что sudo выполняется без ввода пароля.
 
