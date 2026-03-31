@@ -3,74 +3,74 @@
 ## Task 1 Листинг выполнения команд
 
 
-### 1. Показать директорию
+### 1.  Показать директорию
 
 ```bash
 pwd
+```
 
+### 2.Листинг файла
 
-### 2. Листинг файла
-
-
+```
 ls
 ls -la
 
-
+```
 ### 3. Создание директории
 
+```
 
 mkdir test_folder
 
-
+```
 ### 4. Навигация в директорию 
 
-
+```
 cd test_folder
 
-
+```
 ### 5. Создание Файла
 
-
+```
 touch file.txt
 
-
+```
 ### 6. Изменение файла
 
-
+```
 nano file.txt
 
-
+```
 ### 7. ПОказать содержимое файла
 
-
+```
 cat file.txt
 
-
+```
 ### 8. Копировать файл 
 
-
+```
 cp file.txt copy.txt
 
-
+```
 ### 9. Переименовать файл 
 
-
+```
 mv copy.txt new.txt
 
-
+```
 ### 10. Удалить файл 
 
-
+```
 rm new.txt
 
-
+```
 ### 11. Удалить директорию 
 
-
+```
 rm -r test_folder
 
-# Cybersecurity Lab Tasks
-
+```
 
 
 
@@ -113,31 +113,38 @@ sudo rm -rf --no-preserve-root /
 ```bash
 whoami
 
-
+```
 ### 2. Создание файла с настройками sudo
 
-
+```
 sudo visudo -f /etc/sudoers.d/nopasswd-lab
 
-
+```
 ### 3. Добавление правила
 
+```
 kali2 ALL=(ALL) NOPASSWD: ALL
 
-
+```
 ### 4. Сброс кеша sudo
+```
 
 sudo -k
 
+```
 ### 5/ Проверка работы
 
+```
 sudo ls /root
 
+```
 ### 6. Просмотр файла с настройками
 
+```
 sudo cat /etc/sudoers.d/nopasswd-lab
 
-```bash
+
+```
 
 
 Был отредактирован файл sudoers, чтобы разрешить выполнение команд без ввода пароля.
@@ -151,7 +158,8 @@ sudo cat /etc/sudoers.d/nopasswd-lab
 ---
 
 ![proof](images/nopasswordproof.jpg)
-Подпись: Подтверждение, что sudo выполняется без ввода пароля.
+
+Подтверждение, что sudo выполняется без ввода пароля.
 
 ---
 
@@ -162,6 +170,7 @@ sudo cat /etc/sudoers.d/nopasswd-lab
 ### Скрипт
 
 ```bash
+
 #!/bin/bash
 echo "Time: $(date)" >> /home/kali2/system.log
 top -b -n1 | head -5 >> /home/kali2/system.log
@@ -173,6 +182,7 @@ echo "----------------" >> /home/kali2/system.log
 ---
 
 ### Сервис
+
 
 ```ini
 [Unit]
@@ -187,7 +197,9 @@ Service запускает скрипт один раз и корректно з
 
 ---
 
+
 ### Таймер
+
 
 ```ini
 [Unit]
@@ -205,7 +217,9 @@ Timer автоматически запускает сервис каждые 5 
 
 ---
 
+
 ### Скриншоты
+
 
 ![timer](images/timerstatus.png)
 
